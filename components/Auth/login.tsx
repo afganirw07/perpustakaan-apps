@@ -1,9 +1,29 @@
 import { COLORS } from "@/constants/colors";
+import { loginUser } from "@/lib/auth";
 import { router } from "expo-router";
 import { Lock, Mail } from "lucide-react-native";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
+import { Alert, Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 export default function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleLogin = async () => {
+        if (!email || !password) {
+            Alert.alert("Error", "Email dan password tidak boleh kosong.");
+            return;
+        }
+        try {
+            const res = await loginUser(email, password);
+            if (res.access_token) {
+                router.replace("/Homepage/page");
+            }
+        } catch (error) {
+            Alert.alert("Login Gagal", "Email atau password salah. Silakan coba lagi.");
+        }
+    }
+
     return (
         <View
             style={{
@@ -57,6 +77,9 @@ export default function Login() {
                 >
                     <Mail size={20} color={COLORS.textDark} />
                     <TextInput
+                        value={email}
+                        onChangeText={setEmail}
+                        keyboardType="email-address"
                         placeholder="Email"
                         placeholderTextColor={COLORS.placeholder}
                         style={{
@@ -81,6 +104,8 @@ export default function Login() {
                 >
                     <Lock size={20} color={COLORS.textDark} />
                     <TextInput
+                        value={password}
+                        onChangeText={setPassword}
                         placeholder="Password"
                         placeholderTextColor={COLORS.placeholder}
                         secureTextEntry
@@ -109,7 +134,7 @@ export default function Login() {
                         borderRadius: 30,
                         alignItems: "center",
                     }}
-                    onPress={() => console.log("Register pressed")}
+                    onPress={handleLogin}
                 >
                     <Text
                         style={{

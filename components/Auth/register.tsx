@@ -1,10 +1,31 @@
 import { COLORS } from "@/constants/colors";
+import { registerUser } from "@/lib/auth";
 import { router } from "expo-router";
 import { Lock, Mail, User } from "lucide-react-native";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
+import { Alert, Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 export default function Register() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
+    const handleRegister = async () => {
+        if (!name || !email || !password) {
+            Alert.alert("Error", "Nama, email, dan password tidak boleh kosong.");
+            return;
+        }
+        try {
+            await registerUser({ name, email, password, role_user: "user" });
+            Alert.alert("Sukses", "Akun berhasil dibuat! Silakan masuk.");
+            setTimeout(() => {
+                router.push("/auth/login/page");
+            }, 2000);
+        } catch (error) {
+            console.error("Registration failed:", error);
+            Alert.alert("Registrasi Gagal", "Terjadi kesalahan saat mendaftar. Silakan coba lagi.");
+        }
+    }
 
     const toLogin = () => {
         router.push("/auth/login/page");
@@ -61,6 +82,8 @@ export default function Register() {
                 >
                     <User size={20} color={COLORS.textDark} />
                     <TextInput
+                        value={name}
+                        onChangeText={setName}
                         placeholder="Nama Lengkap"
                         placeholderTextColor={COLORS.placeholder}
                         style={{
@@ -85,6 +108,9 @@ export default function Register() {
                 >
                     <Mail size={20} color={COLORS.textDark} />
                     <TextInput
+                        value={email}
+                        onChangeText={setEmail}
+                        keyboardType="email-address"
                         placeholder="Email"
                         placeholderTextColor={COLORS.placeholder}
                         style={{
@@ -109,6 +135,8 @@ export default function Register() {
                 >
                     <Lock size={20} color={COLORS.textDark} />
                     <TextInput
+                        value={password}
+                        onChangeText={setPassword}
                         placeholder="Password"
                         placeholderTextColor={COLORS.placeholder}
                         secureTextEntry
@@ -137,7 +165,7 @@ export default function Register() {
                         borderRadius: 30,
                         alignItems: "center",
                     }}
-                    onPress={() => console.log("Register pressed")}
+                    onPress={handleRegister}
                 >
                     <Text
                         style={{

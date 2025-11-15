@@ -1,0 +1,15 @@
+import { View, Text } from "react-native"
+
+export default function Homepage() {
+    
+    return(
+        <>
+        <View>
+            <Text>Homepage</Text>
+        </View>
+        <View>
+            <Text>Footer</Text>
+        </View>
+        </>
+    )
+}
