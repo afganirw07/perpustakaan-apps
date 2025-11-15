@@ -1,9 +1,14 @@
-import { User, Mail, Lock } from "lucide-react-native";
-import { Image, Text, TextInput, View, TouchableOpacity } from "react-native";
 import { COLORS } from "@/constants/colors";
 import { router } from "expo-router";
+import { Lock, Mail, User } from "lucide-react-native";
+import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 export default function Register() {
+
+
+    const toLogin = () => {
+        router.push("/auth/login/page");
+    }
     return (
         <View
             style={{
@@ -42,7 +47,7 @@ export default function Register() {
             </View>
 
             {/* Inputs */}
-            <View style={{ paddingHorizontal: 20, marginTop: 20, gap: 15 }}>
+            <View style={{ paddingHorizontal: 20, gap: 10 }}>
                 {/* Name */}
                 <View
                     style={{
@@ -150,7 +155,7 @@ export default function Register() {
                     <Text style={{ color: COLORS.textMuted, fontSize: 14 }}>
                         Sudah punya akun?{" "}
                     </Text>
-                    <TouchableOpacity onPress={() => router.push("/auth/login")}>
+                    <TouchableOpacity onPress={toLogin}>
                         <Text style={{ color: COLORS.primary, fontSize: 14, fontWeight: "600" }}>
                             Masuk
                         </Text>

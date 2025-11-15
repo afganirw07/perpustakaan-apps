@@ -1,9 +1,9 @@
-ximport { User, Mail, Lock } from "lucide-react-native";
-import { Image, Text, TextInput, View, TouchableOpacity } from "react-native";
 import { COLORS } from "@/constants/colors";
 import { router } from "expo-router";
+import { Lock, Mail } from "lucide-react-native";
+import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 
-export default function Register() {
+export default function Login() {
     return (
         <View
             style={{
@@ -34,7 +34,7 @@ export default function Register() {
                 }}
             >
                 <Text style={{ fontSize: 32, fontWeight: "bold", color: COLORS.textDark }}>
-                    Daftar
+                    Masuk
                 </Text>
                 <Text style={{ fontSize: 16, color: COLORS.textMuted }}>
                     Silakan daftar untuk melanjutkan
@@ -43,29 +43,6 @@ export default function Register() {
 
             {/* Inputs */}
             <View style={{ paddingHorizontal: 20, marginTop: 20, gap: 15 }}>
-                {/* Name */}
-                <View
-                    style={{
-                        flexDirection: "row",
-                        alignItems: "center",
-                        backgroundColor: "rgba(0,0,0,0.04)",
-                        borderRadius: 30,
-                        paddingHorizontal: 12,
-                        paddingVertical: 10,
-                    }}
-                >
-                    <User size={20} color={COLORS.textDark} />
-                    <TextInput
-                        placeholder="Nama Lengkap"
-                        placeholderTextColor={COLORS.placeholder}
-                        style={{
-                            marginLeft: 10,
-                            flex: 1,
-                            fontSize: 16,
-                            color: COLORS.textDark,
-                        }}
-                    />
-                </View>
 
                 {/* Email */}
                 <View
@@ -148,11 +125,11 @@ export default function Register() {
                 {/* Already have account */}
                 <View style={{ flexDirection: "row", justifyContent: "center" }}>
                     <Text style={{ color: COLORS.textMuted, fontSize: 14 }}>
-                        Sudah punya akun?{" "}
+                        Belum punya akun?{" "}
                     </Text>
-                    <TouchableOpacity onPress={() => router.push("/auth/login")}>
+                    <TouchableOpacity onPress={() => router.push("/auth/register/page")}>
                         <Text style={{ color: COLORS.primary, fontSize: 14, fontWeight: "600" }}>
-                            Masuk
+                            Daftar
                         </Text>
                     </TouchableOpacity>
                 </View>

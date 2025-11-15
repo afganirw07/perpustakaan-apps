@@ -109,7 +109,7 @@ export default function ThirdPage() {
                             backgroundColor: COLORS.primary || "#FF6B00",
                             paddingVertical: 14,
                             paddingHorizontal: 110,
-                            borderRadius: 10,
+                            borderRadius: 30,
                         }}
                         onPress={NextPage}
                     >
