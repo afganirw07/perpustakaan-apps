@@ -10,6 +10,7 @@ export default function ThirdPage() {
     const NextPage = async () => {
         try {
             await AsyncStorage.setItem('getStarted', 'true')
+            router.replace("/auth/register/page");
         } catch (error) {
             console.log(error)
         }
@@ -20,7 +21,7 @@ export default function ThirdPage() {
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.background }}>
             <View style={{ flex: 1, paddingHorizontal: 20 }}>
                 {/* Gambar */}
-                <View style={{ alignItems: "center", justifyContent: "center", marginTop: 80 }}>
+                <View style={{ alignItems: "center", justifyContent: "center", marginTop: 90 }}>
                     <Image
                         source={require("../../assets/onboarding/onboarding3.png")}
                         style={{ width: 300, height: 300, resizeMode: "contain" }}
