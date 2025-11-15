@@ -15,10 +15,10 @@ export default function Login() {
         >
             {/* Image */}
             <Image
-                source={require("@/assets/auth/register.png")}
+                source={require("@/assets/auth/login.png")}
                 style={{
-                    width: 250,
-                    height: 250,
+                    width: 300,
+                    height: 300,
                     resizeMode: "contain",
                     alignSelf: "center",
                     marginTop: 30,
@@ -37,7 +37,7 @@ export default function Login() {
                     Masuk
                 </Text>
                 <Text style={{ fontSize: 16, color: COLORS.textMuted }}>
-                    Silakan daftar untuk melanjutkan
+                    Silakan masuk untuk melanjutkan
                 </Text>
             </View>
 
@@ -118,7 +118,7 @@ export default function Login() {
                             fontWeight: "600",
                         }}
                     >
-                        Daftar
+                        Masuk
                     </Text>
                 </TouchableOpacity>
 

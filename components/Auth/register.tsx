@@ -22,8 +22,8 @@ export default function Register() {
             <Image
                 source={require("@/assets/auth/register.png")}
                 style={{
-                    width: 250,
-                    height: 250,
+                    width: 300,
+                    height: 300,
                     resizeMode: "contain",
                     alignSelf: "center",
                     marginTop: 30,
